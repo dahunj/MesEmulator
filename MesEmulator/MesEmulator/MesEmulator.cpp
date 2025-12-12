@@ -43,6 +43,8 @@ BOOL CMesEmulatorApp::InitInstance()
 	// any shell tree view or shell list view controls.
 	CShellManager *pShellManager = new CShellManager;
 
+	
+
 	// Standard initialization
 	// If you are not using these features and wish to reduce the size
 	// of your final executable, you should remove from the following
@@ -50,6 +52,13 @@ BOOL CMesEmulatorApp::InitInstance()
 	// Change the registry key under which our settings are stored
 	// TODO: You should modify this string to be something appropriate
 	// such as the name of your company or organization
+
+
+	TCHAR szCurrentDir[1024];
+	GetCurrentDirectory(1024, szCurrentDir);
+	gsCurrentDir = (CString)szCurrentDir;
+
+
 	SetRegistryKey(_T("Local AppWizard-Generated Applications"));
 
 	CMesEmulatorDlg dlg;

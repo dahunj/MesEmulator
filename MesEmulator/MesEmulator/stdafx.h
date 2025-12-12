@@ -52,6 +52,7 @@
 #include <afxcontrolbars.h>     // MFC support for ribbons and control bars
 
 
+extern CString gsCurrentDir;
 
 
 

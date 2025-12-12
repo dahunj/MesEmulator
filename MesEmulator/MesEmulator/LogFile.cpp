@@ -1,7 +1,9 @@
 #include "StdAfx.h"
 #include "LogFile.h"
 
-CCriticalSection g_csHandlerLog;
+CCriticalSection g_csEquipLog;
+
+CLogFile g_objLogFile;
 
 CLogFile::CLogFile(void)
 {
@@ -12,13 +14,24 @@ CLogFile::~CLogFile(void)
 {
 }
 
-
-
-void CLogFile::Save_HandlerLog(CString sLog)
+void CLogFile::Create_Folder(CString sPath)
 {
-	g_csHandlerLog.Lock();
+	if (sPath == _T("")) return;
+	if (sPath.Right(1) == _T("\\")) sPath = sPath.Left(sPath.GetLength() - 1);
+	if (GetFileAttributes(sPath) != -1) return;	// Directory Exist!!!
 
-	CString strPath = gsCurrentDir + "\\LOG\\Handler";
+	int nFound = sPath.ReverseFind('\\');
+	Create_Folder(sPath.Left(nFound));
+
+	CreateDirectory(sPath, NULL);
+}
+
+
+void CLogFile::Save_EquipLog(CString sLog)
+{
+	g_csEquipLog.Lock();
+
+	CString strPath = gsCurrentDir + "\\LOG\\Equip";
 
 	Create_Folder(strPath);
 
@@ -42,5 +55,5 @@ void CLogFile::Save_HandlerLog(CString sLog)
 			pEx->Delete();
 		}
 	}
-	g_csHandlerLog.Unlock();
+	g_csEquipLog.Unlock();
 }

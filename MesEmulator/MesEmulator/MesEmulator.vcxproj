@@ -43,6 +43,8 @@
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>$(ProjectDir)\Include;$(IncludePath)</IncludePath>
     <LibraryPath>$(ProjectDir)\Library;$(LibraryPath)</LibraryPath>
+    <OutDir>Run\</OutDir>
+    <TargetName>$(ProjectName)_Run</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -102,7 +104,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Equip.h" />
-    <ClInclude Include="Equipment.h" />
     <ClInclude Include="LogFile.h" />
     <ClInclude Include="MesEmulator.h" />
     <ClInclude Include="MesEmulatorDlg.h" />
@@ -112,7 +113,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Equip.cpp" />
-    <ClCompile Include="Equipment.cpp" />
     <ClCompile Include="LogFile.cpp" />
     <ClCompile Include="MesEmulator.cpp" />
     <ClCompile Include="MesEmulatorDlg.cpp" />

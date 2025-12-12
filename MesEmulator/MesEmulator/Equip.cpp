@@ -4,12 +4,14 @@
 #include "stdafx.h"
 #include "MesEmulator.h"
 #include "Equip.h"
+#include "LogFile.h"
 
 
 #define	EQUIP_IP	"127.0.0.1"
 #define EQUIP_PORT	11000		// Equip Handler Port
 
 
+CEquip g_objEquip;
 // CEquip
 
 IMPLEMENT_DYNAMIC(CEquip, CWnd)
@@ -61,18 +63,17 @@ LRESULT CEquip::OnClientConnect(WPARAM wConnect, LPARAM lParam)
 	m_bConnected = (BOOL)wConnect;
 	if (!m_bConnected) return 0;
 
-	Set_OperUpdate(gData.sOperID);
-	Set_EquipState(2);	//Idle
-	g_objLogFile.Save_MesAgentLog("MesAgent Connected");
+	//
+	g_objLogFile.Save_EquipLog("Equip Connected");
 	return 0;
 }
 
 LRESULT CEquip::OnClientClose(WPARAM wParam, LPARAM lParam)
 {
 	m_bConnected = FALSE;
-	m_bHostOnline = FALSE;
+	m_bEquipmentOnline = FALSE;
 	m_Client.Close_Socket();
-	g_objLogFile.Save_MesAgentLog("MesAgent Disconnected");
+	g_objLogFile.Save_EquipLog("Equip Disconnected");
 	return 0;
 }
 
@@ -93,7 +94,7 @@ LRESULT CEquip::OnClientReceive(WPARAM wParam, LPARAM lParam)
 
 		if (nStart < 0 || nStart > nEnd) {
 			strLog.Format("[<-] : <<Error>> %s : Start(%d), End(%d)", m_strRecvCmd, nStart, nEnd);
-			g_objLogFile.Save_MesAgentLog(strLog);
+			g_objLogFile.Save_EquipLog(strLog);
 			m_strRecvCmd.Delete(0, nEnd + 1);	// 쓰레기값이 채워져 있어서...
 			continue;
 		}
@@ -103,7 +104,7 @@ LRESULT CEquip::OnClientReceive(WPARAM wParam, LPARAM lParam)
 
 		// Inspector Log ////////////////////////////////////////////////////////////
 		strLog.Format("[<-] : %s", strRecv);
-		g_objLogFile.Save_MesAgentLog(strLog);
+		g_objLogFile.Save_EquipLog(strLog);
 		/////////////////////////////////////////////////////////////////////////////
 
 		char chSep = ',';
@@ -115,40 +116,11 @@ LRESULT CEquip::OnClientReceive(WPARAM wParam, LPARAM lParam)
 		CString strArg[10];
 		for (int i = 0; i < 5; i++) AfxExtractSubString(strArg[i], strRecv, i + 2, chSep);
 
-		if (strCmd == "CONTROL") {
-			if (strOp == "STATE") Get_ControlState(strArg[0]);
+		if (strCmd == "CONTROL") 
+		{
+			//if (strOp == "STATE") Get_ControlState(strArg[0]);
 
-		} else if (strCmd == "LOT") {
-			if (strOp == "START")  Get_LotStart(strArg[0], strArg[1], strArg[2], strArg[3], strArg[4]);
-			if (strOp == "CANCEL") Get_LotCancel(strArg[0], strArg[1],  strArg[2]);
-
-		} else if (strCmd == "TIME") {
-			if (strOp == "UPDATE") Get_TimeSync();
-
-		} else if (strCmd == "RECIPE") {
-			if (strOp == "REQUEST") Get_RecipeList(strArg[0]);
-			if (strOp == "SELECT")	Get_PPSelect(strArg[0], strArg[1]);
-			if (strOp == "FAIL")	Get_PPSelectFail(strArg[0], strArg[1], strArg[2], strArg[3]);
-
-		} else if (strCmd == "CM") {
-			if (strOp == "RESULT") Get_CmResult(strArg[0], strArg[1],  strArg[2], strArg[3], strArg[4]);
-			if (strOp == "FAIL")   Get_CmFail(strArg[0], strArg[1],  strArg[2], strArg[3]);
-
-		} else if (strCmd == "HOST") {
-			if (strOp == "MESSAGE") Get_HostMessage(strArg[0]);
-
-		} else if (strCmd == "MGZ") {
-			if (strOp == "CONFIRM") Get_MGZConfirm(strArg[0]);
-			if (strOp == "CANCEL")  Get_MGZCancel(strArg[0], strArg[1],  strArg[2]);
-
-		} else if (strCmd == "CARRIER") {
-			if (strOp == "CONFIRM") Get_CarrierConfirm(strArg[0]);
-			if (strOp == "CANCEL")  Get_CarrierCancel(strArg[0], strArg[1],  strArg[2]);
-
-		} else if (strCmd == "MODULE") {
-			if (strOp == "DATA") Get_ModuleData(strRecv);
-
-		}
+		} 
 	}
 
 	return 0;

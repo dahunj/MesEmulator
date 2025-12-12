@@ -28,9 +28,11 @@ public:
 	void Initialize();
 	void Terminate();
 
-private:
-
+	BOOL Is_Connected() { return m_bConnected; }
+	BOOL Is_HostOnline() { return m_bEquipmentOnline; }
+	
 
 };
 
 
+extern CEquip g_objEquip;

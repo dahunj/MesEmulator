@@ -7,7 +7,7 @@ public:
 
 public:
 	void Create_Folder(CString sPath);
-	void Save_HandlerLog(CString sLog);
+	void Save_EquipLog(CString sLog);
 };
 
 

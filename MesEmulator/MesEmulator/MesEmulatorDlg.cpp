@@ -6,6 +6,7 @@
 #include "MesEmulator.h"
 #include "MesEmulatorDlg.h"
 #include "afxdialogex.h"
+#include "Equip.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -63,6 +64,9 @@ BEGIN_MESSAGE_MAP(CMesEmulatorDlg, CDialogEx)
 	ON_WM_SYSCOMMAND()
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
+	ON_BN_CLICKED(IDC_BTN_CONNECT, &CMesEmulatorDlg::OnBnClickedBtnConnect)
+	ON_BN_CLICKED(IDC_BTN_CONNECT2, &CMesEmulatorDlg::OnBnClickedBtnConnect2)
+	ON_WM_DESTROY()
 END_MESSAGE_MAP()
 
 
@@ -97,7 +101,7 @@ BOOL CMesEmulatorDlg::OnInitDialog()
 	SetIcon(m_hIcon, TRUE);			// Set big icon
 	SetIcon(m_hIcon, FALSE);		// Set small icon
 
-	// TODO: Add extra initialization here
+	g_objEquip.Create(NULL, NULL, WS_CHILD, CRect(0,0,0,0), this, 0);
 
 	return TRUE;  // return TRUE  unless you set the focus to a control
 }
@@ -151,3 +155,25 @@ HCURSOR CMesEmulatorDlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
+
+
+void CMesEmulatorDlg::OnBnClickedBtnConnect()
+{
+	g_objEquip.Initialize();
+}
+
+
+void CMesEmulatorDlg::OnBnClickedBtnConnect2()
+{
+	g_objEquip.Terminate();
+}
+
+
+void CMesEmulatorDlg::OnDestroy()
+{
+	CDialogEx::OnDestroy();
+
+	g_objEquip.DestroyWindow();
+
+	// TODO: 여기에 메시지 처리기 코드를 추가합니다.
+}

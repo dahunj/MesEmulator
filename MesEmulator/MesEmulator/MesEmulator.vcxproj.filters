@@ -39,9 +39,6 @@
     <ClInclude Include="Resource.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Equipment.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="Equip.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -57,9 +54,6 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="stdafx.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Equipment.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Equip.cpp">
