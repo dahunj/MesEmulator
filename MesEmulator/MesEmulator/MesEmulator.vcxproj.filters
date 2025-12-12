@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="CXml">
+      <UniqueIdentifier>{e1172d81-fed2-4156-9fb5-dce424c818d9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -45,6 +48,18 @@
     <ClInclude Include="LogFile.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="CXml\Xml.h">
+      <Filter>CXml</Filter>
+    </ClInclude>
+    <ClInclude Include="CXml\XmlNode.h">
+      <Filter>CXml</Filter>
+    </ClInclude>
+    <ClInclude Include="CXml\XmlNodes.h">
+      <Filter>CXml</Filter>
+    </ClInclude>
+    <ClInclude Include="CXml\Xsl.h">
+      <Filter>CXml</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MesEmulator.cpp">
@@ -61,6 +76,18 @@
     </ClCompile>
     <ClCompile Include="LogFile.cpp">
       <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="CXml\Xml.cpp">
+      <Filter>CXml</Filter>
+    </ClCompile>
+    <ClCompile Include="CXml\XmlNode.cpp">
+      <Filter>CXml</Filter>
+    </ClCompile>
+    <ClCompile Include="CXml\XmlNodes.cpp">
+      <Filter>CXml</Filter>
+    </ClCompile>
+    <ClCompile Include="CXml\Xsl.cpp">
+      <Filter>CXml</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -103,6 +103,10 @@
     <None Include="res\MesEmulator.rc2" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CXml\Xml.h" />
+    <ClInclude Include="CXml\XmlNode.h" />
+    <ClInclude Include="CXml\XmlNodes.h" />
+    <ClInclude Include="CXml\Xsl.h" />
     <ClInclude Include="Equip.h" />
     <ClInclude Include="LogFile.h" />
     <ClInclude Include="MesEmulator.h" />
@@ -112,6 +116,10 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CXml\Xml.cpp" />
+    <ClCompile Include="CXml\XmlNode.cpp" />
+    <ClCompile Include="CXml\XmlNodes.cpp" />
+    <ClCompile Include="CXml\Xsl.cpp" />
     <ClCompile Include="Equip.cpp" />
     <ClCompile Include="LogFile.cpp" />
     <ClCompile Include="MesEmulator.cpp" />

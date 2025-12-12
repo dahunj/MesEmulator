@@ -1,6 +1,6 @@
 #pragma once
 
-
+#include "./CXml/Xml.h"
 // CEquip
 
 class CEquip : public CWnd
