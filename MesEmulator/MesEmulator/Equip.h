@@ -58,11 +58,24 @@ private:
 	void Get_S6F11_CarrierIDReport();
 	void Get_S6F11_CarrierOutReport();
 
+	void Get_S7F26();
+
+
 public:
 	void Set_S6F12_CarrierIDReport();
 	void Set_S6F12_CarrierOutReport();
 
 	void Set_S2F49_PP_SELECT();
+	void Set_S2F49_PP_UPLOAD_CONFIRM();
+	void Set_S7F25();
+
+	void Set_S2F49_TRAY_LOT_START();
+	void Set_S2F49_LOT_MODULE_DATA_DETAIL();
+
+
+
+	void Set_S2F3_LINK_REQUEST();
+
 
 };
 

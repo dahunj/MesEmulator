@@ -33,4 +33,5 @@ public:
 	afx_msg void OnBnClickedBtnConnect();
 	afx_msg void OnBnClickedBtnConnect2();
 	afx_msg void OnDestroy();
+	afx_msg void OnTimer(UINT_PTR nIDEvent);
 };

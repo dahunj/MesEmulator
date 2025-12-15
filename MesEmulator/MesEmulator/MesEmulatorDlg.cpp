@@ -67,6 +67,7 @@ BEGIN_MESSAGE_MAP(CMesEmulatorDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_BTN_CONNECT, &CMesEmulatorDlg::OnBnClickedBtnConnect)
 	ON_BN_CLICKED(IDC_BTN_CONNECT2, &CMesEmulatorDlg::OnBnClickedBtnConnect2)
 	ON_WM_DESTROY()
+	ON_WM_TIMER()
 END_MESSAGE_MAP()
 
 
@@ -102,6 +103,8 @@ BOOL CMesEmulatorDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// Set small icon
 
 	g_objEquip.Create(NULL, NULL, WS_CHILD, CRect(0,0,0,0), this, 0);
+
+	SetTimer(0, 50000, NULL);
 
 	return TRUE;  // return TRUE  unless you set the focus to a control
 }
@@ -176,4 +179,14 @@ void CMesEmulatorDlg::OnDestroy()
 	g_objEquip.DestroyWindow();
 
 	// TODO: 여기에 메시지 처리기 코드를 추가합니다.
+}
+
+
+void CMesEmulatorDlg::OnTimer(UINT_PTR nIDEvent)
+{
+	// TODO: 여기에 메시지 처리기 코드를 추가 및/또는 기본값을 호출합니다.
+
+	g_objEquip.Set_S2F3_LINK_REQUEST();
+
+	CDialogEx::OnTimer(nIDEvent);
 }
