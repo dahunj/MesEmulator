@@ -7,3 +7,5 @@
 
 
 CString gsCurrentDir;
+
+GLOVAL_DATA gData;

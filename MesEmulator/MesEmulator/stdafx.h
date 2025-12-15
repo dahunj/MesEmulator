@@ -54,14 +54,35 @@
 
 extern CString gsCurrentDir;
 
+typedef struct {
+	int			nHostPort;
+	CString		sEquipId;
+	BOOL		bHandlerLog;
+	BOOL		bHostLog;
+	CString		sErrFile;
+	BOOL		bJahwa;
+	CString		sOperId;
 
+	CString		sCurrentRecipe;
+	int			nRcpCount;
+	CString		sRecipList[100];
 
+	int			nPreEquipState;		// 1:init, 2:idle, 3:Setup, 4:Ready, 5:Run, 6:Pause(Down)
+	int			nCurEquipState;
 
+	CString		sHandlerLotID[6];
+	CString		sHandlerPortID[6];
+	CString		sHandlerCMCount[6];
 
+	CString		sBarcode[6][20][40];
+	CString		sJudge[6][20][40];
+	CString		sNgCode[6][20][40];
 
+	int			nAlarmID;
+	CString		sAlarmTxt;
+	CString		sGMESData[11];
+	CString		sVersion;
+	CString		sBodyData[4][50];	// 0:T1M-PC2(1~32), 1:T1S-PC4(1~32), 2:T2M-PC3(1~44), 3:T2S-PC5(1~44)
+} GLOVAL_DATA;
 
-
-
-
-
-
+extern GLOVAL_DATA gData;

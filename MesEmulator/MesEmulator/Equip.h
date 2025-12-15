@@ -52,8 +52,17 @@ public:
 	BOOL CEquip::Extract_Xml(CString sXmlData);
 
 private:
+
+	void Send_Command(CString sSend, BOOL bReply, CString sStFn, CString sRcmd="");
+
 	void Get_S6F11_CarrierIDReport();
 	void Get_S6F11_CarrierOutReport();
+
+public:
+	void Set_S6F12_CarrierIDReport();
+	void Set_S6F12_CarrierOutReport();
+
+	void Set_S2F49_PP_SELECT();
 
 };
 
