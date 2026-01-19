@@ -199,10 +199,10 @@ BOOL CEquip::Extract_Xml(CString sXmlData)
 		CString strData = nodes[i]->GetChild("PPARM")->GetAttribute("VALUE");
 
 		}*/
-		if(nCount < nTemp)
+	/*	if(nCount < nTemp)
 		{
 			return FALSE;
-		}
+		}*/
 		Set_S2F49_PP_UPLOAD_CONFIRM();
 
 	}
