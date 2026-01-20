@@ -60,8 +60,17 @@ private:
 
 	void Get_S7F26();
 
+	void Get_S6F11_LotIDReport();
+
 
 public:
+	void Set_S6F12_LotIDReport();
+	void Set_S2F49_LotStart(int nLotNo);
+
+	void Set_S6F12_PP_SELECTED_REPORT();
+
+
+
 	void Set_S6F12_CarrierIDReport();
 	void Set_S6F12_CarrierOutReport();
 
@@ -69,7 +78,7 @@ public:
 	void Set_S2F49_PP_UPLOAD_CONFIRM();
 	void Set_S7F25();
 
-	void Set_S2F49_TRAY_LOT_START();
+	void Set_S2F49_LOT_START();
 	void Set_S2F49_LOT_MODULE_DATA_DETAIL();
 
 
