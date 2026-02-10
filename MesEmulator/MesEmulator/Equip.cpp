@@ -391,7 +391,7 @@ void CEquip::Set_S2F49_PP_SELECT()
 	strSend += "        </CP>" + CRLF;
 	strSend += "        <CP>" + CRLF;
 	strSend += "          <CPNAME NAME=\"CPNAME\" VALUE=\"LOTID\" />" + CRLF;
-	strSend += "          <CPVAL NAME=\"CPVAL\" VALUE=\"Test0\" />" + CRLF;
+	strSend += "          <CPVAL NAME=\"CPVAL\" VALUE=\"TEST000000001\" />" + CRLF;
 	strSend += "        </CP>" + CRLF;
 	strSend += "        <CP>" + CRLF;
 	strSend += "          <CPNAME NAME=\"CPNAME\" VALUE=\"PROCID\" />" + CRLF;
@@ -610,7 +610,7 @@ void CEquip::Set_S2F49_LOT_START()
 	strSend += "        </CP>" + CRLF;
 	strSend += "        <CP>" + CRLF;
 	strSend += "          <CPNAME NAME=\"CPNAME\" VALUE=\"LOTID\" />" + CRLF;
-	strSend += "          <CPVAL NAME=\"CPVAL\" VALUE=\"Test0\" />" + CRLF;
+	strSend += "          <CPVAL NAME=\"CPVAL\" VALUE=\"TEST000000001\" />" + CRLF;
 	strSend += "        </CP>" + CRLF;
 	strSend += "        <CP>" + CRLF;
 	strSend += "          <CPNAME NAME=\"CPNAME\" VALUE=\"TRAYID\" />" + CRLF;
