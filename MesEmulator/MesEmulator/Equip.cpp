@@ -175,11 +175,18 @@ BOOL CEquip::Extract_Xml(CString sXmlData)
 		}
 		else if(m_strRcmd =="20106")
 		{
-			if(nLotNo >=5) nLotNo = 0;
-			Set_S6F12_LotIDReport();
+			//if(nLotNo >=5) 
+			//Set_S6F12_LotIDReport();
+			//Set_S2F49_PP_SELECT();
 
-			Set_S2F49_PP_SELECT();
-			//Set_S2F49_LotStart(nLotNo);
+			CXmlNodes nodes = m_xml.GetRoot()->GetChild("ITEM")->GetChild("DVLIST")->GetChildren();
+			int nCount = nodes.GetCount();
+			CString strName = nodes[2]->GetAttribute("VALUE");			
+						
+			gData.sHandlerLotID[nLotNo] = strName;
+			//gData.sHandlerLotID[nLotNo].Format("TEST-%d", nTemp);
+					
+			Set_S2F49_LotStart(0);
 			//nLotNo++;
 		}
 		else if(m_strRcmd =="40102") //get PP SELECTED REPORT 
@@ -252,7 +259,7 @@ void CEquip::Set_S6F12_LotIDReport()
 void CEquip::Set_S2F49_LotStart(int nLotNo)
 {
 	gData.sEquipId = "AVI-TEST";
-	gData.sHandlerLotID[nLotNo].Format("TEST-%d", nLotNo);
+	
 	CString strSend = "<?xml version=\"1.0\" encoding=\"utf-16\"?>" + CRLF;
 
 	strSend += "<EIF VERSION=\"2.0\" ID=\"S2F49\" NAME=\"Enhanced Remote Command\">" + CRLF;
@@ -289,11 +296,11 @@ void CEquip::Set_S2F49_LotStart(int nLotNo)
 	strSend += "        </CP>" + CRLF;
 	strSend += "        <CP>" + CRLF;
 	strSend += "          <CPNAME NAME=\"CPNAME\" VALUE=\"RECIPEID\" />" + CRLF;
-	strSend += "          <CPVAL NAME=\"CPVAL\" VALUE=\"A53B_DPAMS_REV0\" />" + CRLF;
+	strSend += "          <CPVAL NAME=\"CPVAL\" VALUE=\"A34B_DPAMS_REV0\" />" + CRLF;
 	strSend += "        </CP>" + CRLF;
 	strSend += "        <CP>" + CRLF;
 	strSend += "          <CPNAME NAME=\"CPNAME\" VALUE=\"TOTALQTY\" />" + CRLF;
-	strSend += "          <CPVAL NAME=\"CPVAL\" VALUE=\"320\" />" + CRLF;
+	strSend += "          <CPVAL NAME=\"CPVAL\" VALUE=\"80\" />" + CRLF;
 	strSend += "        </CP>" + CRLF;
 	strSend += "        <CP>" + CRLF;
 	strSend += "          <CPNAME NAME=\"CPNAME\" VALUE=\"OPERATORID\" />" + CRLF;
